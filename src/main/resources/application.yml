@@ -1,0 +1,56 @@
+server:
+  port: 8082
+welcome:
+  message: "Hello Koumahodamane !"
+spring:
+  profiles:
+    active: dev
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: "jdbc:mysql://localhost:8889/spring_spring1db"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.jdbc.Driver"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: "jdbc:mysql://localhost:8889/spring1db-qa"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.jdbc.Driver"
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: "jdbc:mysql://localhost:8889/spring1db-prod"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.jdbc.Driver"
